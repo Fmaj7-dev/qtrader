@@ -7,6 +7,12 @@ set(CMAKE_AUTOUIC ON)
 
 find_package(Qt5 COMPONENTS Widgets Charts REQUIRED)
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/core/include)
+
+add_subdirectory(core)
+
 add_executable(qtrader main.cpp)
-target_link_libraries(qtrader Qt5::Widgets Qt5::Charts)
+
+target_link_libraries(qtrader Qt5::Widgets Qt5::Charts core)
+
 install(TARGETS qtrader DESTINATION bin)

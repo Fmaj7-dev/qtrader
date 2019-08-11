@@ -36,6 +36,10 @@
 #include <QtCharts/QBarCategoryAxis>
 #include <QtCharts/QValueAxis>
 
+#include "seriesrepository.h"
+
+#include <iostream>
+
 QT_CHARTS_USE_NAMESPACE
 
 int main(int argc, char *argv[])
