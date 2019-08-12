@@ -5,13 +5,14 @@
 #include <QFileSystemModel>
 #include <QTreeView>
 
+#include "configtree.h"
 #include "serieplot.h"
 
 QT_CHARTS_USE_NAMESPACE
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
+    QApplication a(argc, argv); 
     QMainWindow window;
 
     QWidget* widget = new QWidget();
@@ -21,17 +22,17 @@ int main(int argc, char *argv[])
     SeriePlot* plot = new SeriePlot();
 
     // add tree
-    /* QLabel* label = new QLabel();
-    label->setText("label");*/
-    QFileSystemModel* model = new QFileSystemModel();
+    /* QFileSystemModel* model = new QFileSystemModel();
     model->setFilter( QDir::Dirs | QDir::NoDotAndDotDot );
     model->setRootPath("");
     QTreeView* tree = new QTreeView();
-    tree->setModel(model);
+    tree->setModel(model);*/
+
+    ConfigTree* configTree = new ConfigTree();
 
     // configure layout
     QHBoxLayout *layout = new QHBoxLayout;
-    layout->addWidget(tree);
+    layout->addWidget(configTree);
     layout->addWidget(plot);
     widget->setLayout(layout);
 
