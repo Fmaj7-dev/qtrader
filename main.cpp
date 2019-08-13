@@ -4,9 +4,11 @@
 #include <QHBoxLayout>
 #include <QFileSystemModel>
 #include <QTreeView>
+#include <QDebug>
 
 #include "configtree.h"
 #include "serieplot.h"
+#include "sqldataprovider.h"
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -14,6 +16,9 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv); 
     QMainWindow window;
+
+    SqlDataProvider sql;
+    qDebug() << QCoreApplication::libraryPaths();
 
     QWidget* widget = new QWidget();
     window.setCentralWidget(widget);
