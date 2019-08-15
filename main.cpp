@@ -1,3 +1,6 @@
+#include "configtree.h"
+#include "serieplot.h"
+
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMainWindow>
 #include <QLabel>
@@ -6,9 +9,7 @@
 #include <QTreeView>
 #include <QDebug>
 
-#include "configtree.h"
-#include "serieplot.h"
-#include "sqldataprovider.h"
+#include <iostream>
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -17,8 +18,16 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv); 
     QMainWindow window;
 
-    SqlDataProvider sql;
-    return 1;
+    /*SeriesRepository repo;
+
+    for (auto& i: {"live_btc", "live_bch", "live_eth"})
+    {
+        auto series = repo.getSeries(i);
+        for(auto& serie : series.values)
+            std::cout<<serie.value<<" ";
+        std::cout<<std::endl<<std::endl;
+    }*/
+
     qDebug() << QCoreApplication::libraryPaths();
 
     QWidget* widget = new QWidget();

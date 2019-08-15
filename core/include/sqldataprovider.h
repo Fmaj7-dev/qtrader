@@ -1,6 +1,8 @@
 #ifndef SQLDATAPROVIDER_H
 #define SQLDATAPROVIDER_H
 
+#include "liveseries.h"
+
 #include <QSqlDatabase>
 
 class DatabaseConnectionException: public std::exception
@@ -11,10 +13,17 @@ class DatabaseConnectionException: public std::exception
     }
 };
 
+using Tables = std::vector< std::string >;
+
+
 class SqlDataProvider
 {
 public:
     SqlDataProvider();
+    ~SqlDataProvider();
+    
+    Tables getAvailableTables();
+    void fillLiveSeries( LiveSeries& series, std::string name );
 
 private:
     void connectToDb();

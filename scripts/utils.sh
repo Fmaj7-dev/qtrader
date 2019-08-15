@@ -1,3 +1,4 @@
+LD_TRACE_LOADED_OBJECTS=1 $1
 #utils
 
 dyld && man dyld
