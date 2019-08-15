@@ -18,6 +18,7 @@ int main(int argc, char *argv[])
     QMainWindow window;
 
     SqlDataProvider sql;
+    return 1;
     qDebug() << QCoreApplication::libraryPaths();
 
     QWidget* widget = new QWidget();
