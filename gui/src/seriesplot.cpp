@@ -1,10 +1,12 @@
-#include "serieplot.h"
+#include "seriesplot.h"
+
+#include <QDateTimeAxis>
 
 QT_CHARTS_USE_NAMESPACE
 
-SeriePlot::SeriePlot()
+SeriesPlot::SeriesPlot()
 {
-    set0 = new QBarSet("Jane");
+    /* set0 = new QBarSet("Jane");
     set1 = new QBarSet("John");
     set2 = new QBarSet("Axel");
     set3 = new QBarSet("Mary");
@@ -45,5 +47,41 @@ SeriePlot::SeriePlot()
     chart->legend()->setAlignment(Qt::AlignBottom);
 
     this->setChart(chart);
+    this->setRenderHint(QPainter::Antialiasing);*/
+}
+
+void SeriesPlot::addLiveSeries(const LiveSeries& liveSeries)
+{
+    QLineSeries *series = new QLineSeries();
+
+    for(auto& item: liveSeries.values)
+    {
+        series->append(item.time*1000, item.value);
+    }
+
+    QChart *chart = new QChart();
+    chart->legend()->hide();
+    chart->addSeries( series );
+    //chart->createDefaultAxes();
+    chart->setTitle( "series name" );
+    chart->setAnimationOptions(QChart::SeriesAnimations);
+
+    this->setChart( chart );
     this->setRenderHint(QPainter::Antialiasing);
+
+    QDateTimeAxis *axisX = new QDateTimeAxis;
+    axisX->setTickCount(8);
+    axisX->setFormat("d MMM");
+    axisX->setTitleText("Date");
+    chart->addAxis(axisX, Qt::AlignBottom);
+    series->attachAxis(axisX);
+
+    QValueAxis *axisY = new QValueAxis;
+    axisY->setLabelFormat("%i");
+    axisY->setTitleText("Value");
+    chart->addAxis(axisY, Qt::AlignLeft);
+    series->attachAxis(axisY);
+
+    QChartView::RubberBand rubber = QChartView::RectangleRubberBand;
+    this->setRubberBand( rubber );
 }

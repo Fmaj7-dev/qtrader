@@ -3,7 +3,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 # source files
 set( GUI_SOURCES
-    src/serieplot.cpp 
+    src/seriesplot.cpp 
     src/configtree.cpp
     src/treemodel.cpp
     src/treeitem.cpp
@@ -26,4 +26,4 @@ add_library(gui
     ${GUI_SOURCES}
 )
 
-qt5_use_modules(gui Charts)
+qt5_use_modules(gui Charts Sql)

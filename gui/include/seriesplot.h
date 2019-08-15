@@ -1,17 +1,23 @@
 #ifndef SERIEPLOT_H
 #define SERIEPLOT_H
 
+#include "liveseries.h"
+
 #include <QtCharts/QChartView>
 #include <QtCharts/QBarSeries>
 #include <QtCharts/QBarSet>
 #include <QtCharts/QLegend>
 #include <QtCharts/QBarCategoryAxis>
 #include <QtCharts/QValueAxis>
+#include <QtCharts/QLineSeries>
 
-class SeriePlot : public QtCharts::QChartView
+class SeriesPlot : public QtCharts::QChartView
 {
 public:
-    SeriePlot();
+    SeriesPlot();
+
+    void addLiveSeries( const LiveSeries& series );
+
 private:
     QtCharts::QBarSet *set0;
     QtCharts::QBarSet *set1;

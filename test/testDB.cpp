@@ -35,7 +35,7 @@ TEST_CASE("database access test")
 TEST_CASE("tables reading test")
 {
 
-}
+} 
 
 TEST_CASE("series reading test")
 {

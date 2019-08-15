@@ -1,5 +1,6 @@
 #include "configtree.h"
 #include "treemodel.h"
+#include "seriesplot.h"
 
 #include <QFile>
 #include <QStringList>
@@ -27,4 +28,12 @@ ConfigTree::ConfigTree( )
 ConfigTree::~ConfigTree()
 {
     
+}
+
+void ConfigTree::setPlot(SeriesPlot* plot)
+{
+    plot_ = plot;
+
+    auto series = repo_.getSeries("live_btc");
+    plot_->addLiveSeries(series);
 }
