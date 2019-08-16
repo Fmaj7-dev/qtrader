@@ -29,7 +29,12 @@ add_executable(qtrader main.cpp)
 
 # add system library
 ADD_LIBRARY(mysql STATIC IMPORTED)
-SET_TARGET_PROPERTIES(mysql PROPERTIES IMPORTED_LOCATION /usr/local/mysql/lib/libmysqlclient.a)
+IF (WIN32)
+  SET_TARGET_PROPERTIES(mysql PROPERTIES IMPORTED_LOCATION "C:/Program Files/MySQL/MySQL Server 8.0/lib/mysqlclient.lib")
+ELSE()
+  SET_TARGET_PROPERTIES(mysql PROPERTIES IMPORTED_LOCATION /usr/local/mysql/lib/libmysqlclient.a)
+ENDIF()
+
 
 # tell cmake to include these libraries in the linking
 target_link_libraries(qtrader Qt5::Widgets Qt5::Charts Qt5::Sql core gui mysql)

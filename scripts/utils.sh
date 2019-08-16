@@ -16,3 +16,14 @@ cp /usr/local/mysql/lib/libmysqlclient.21.dylib .
 install_name_tool -change @rpath/libmysqlclient.21.dylib @executable_path/libmysqlclient.21.dylib /Users/enrique/Qt/5.13.0/clang_64/plugins/sqldrivers/libqsqlmysql.dylib
 cp /Users/enrique/Qt/Qt\ Creator.app/Contents/Frameworks/libcrypto.1.0.0.dylib .
 cp /Users/enrique/Qt/Qt\ Creator.app/Contents/Frameworks/libssl.1.0.0.dylib .
+
+
+# windows configuration
+
+git clone ...
+cd qtrader
+-install mysql
+-set mysqlclient.lib path in CMakeLists.txt
+mkdir bin
+cd bin
+cmake -G "Visual Studio 14 2015 Win64" ../
