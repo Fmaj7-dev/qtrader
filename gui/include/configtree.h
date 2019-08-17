@@ -8,7 +8,7 @@
 #include <QLabel>
 #include <QVBoxLayout>
 
-class SeriesPlot;
+class PlotController;
 
 class ConfigTree : public QWidget
 {
@@ -17,7 +17,7 @@ public:
     ConfigTree();
     virtual ~ConfigTree();
 
-    void setPlot( SeriesPlot* plot );
+    void setPlotController( PlotController* plot );
 
 private:
     QTreeView* view;
@@ -25,7 +25,7 @@ private:
     QVBoxLayout* layout;
 
     // not owning pointer to SeriePlot
-    SeriesPlot* plot_;
+    PlotController* plot_;
 
     // repository of series
     SeriesRepository repo_;

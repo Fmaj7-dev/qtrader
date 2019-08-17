@@ -7,12 +7,14 @@ set( GUI_SOURCES
     src/configtree.cpp
     src/treemodel.cpp
     src/treeitem.cpp
+    src/plotcontroller.cpp
 )
 
 # files needed to moc
 set( GUI_MOCS
     include/configtree.h
     include/treemodel.h
+    include/plotcontroller.h
 )
 
 # mc header files

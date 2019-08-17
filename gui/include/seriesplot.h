@@ -18,17 +18,15 @@ public:
 
     void addLiveSeries( const LiveSeries& series );
 
+protected:
+/* void wheelEvent( QWheelEvent *event ) Q_DECL_OVERRIDE
+    {
+        qreal factor = event->angleDelta().y() > 0? 0.9: 1.1;
+        chart()->zoom(factor);
+        event->accept();
+        QChartView::wheelEvent(event);
+    }*/
 private:
-    QtCharts::QBarSet *set0;
-    QtCharts::QBarSet *set1;
-    QtCharts::QBarSet *set2;
-    QtCharts::QBarSet *set3;
-    QtCharts::QBarSet *set4;
-
-    QtCharts::QBarSeries *series;
-    QtCharts::QChart *chart;
-    QtCharts::QBarCategoryAxis *axisX;
-    QtCharts::QValueAxis *axisY;
 };
 
 #endif

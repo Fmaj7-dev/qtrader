@@ -1,5 +1,6 @@
 #include "configtree.h"
-#include "seriesplot.h"
+//#include "seriesplot.h"
+#include "plotcontroller.h"
 
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMainWindow>
@@ -8,10 +9,11 @@
 #include <QFileSystemModel>
 #include <QTreeView>
 #include <QDebug>
+#include <QSplitter>
 
 #include <iostream>
 
-QT_CHARTS_USE_NAMESPACE
+//QT_CHARTS_USE_NAMESPACE
 
 int main(int argc, char *argv[])
 {
@@ -22,18 +24,23 @@ int main(int argc, char *argv[])
     window.setCentralWidget(widget);
 
     // plot
-    SeriesPlot* plot = new SeriesPlot();
-
+    PlotController* plotController = new PlotController();
+    
     // configTree
     ConfigTree* configTree = new ConfigTree();
-    configTree->setPlot( plot );
+    configTree->setPlotController( plotController );
+
+    // add splitter
+    QSplitter* splitter = new QSplitter(widget);
+    splitter->addWidget( configTree );
+    splitter->addWidget( plotController );
 
     // configure layout
     QHBoxLayout *layout = new QHBoxLayout;
-    layout->addWidget(configTree);
-    layout->addWidget(plot);
-    widget->setLayout(layout);
+    layout->addWidget( splitter );
+    widget->setLayout( layout );
 
+    // show window
     window.resize(1024, 768);
     window.show();
 

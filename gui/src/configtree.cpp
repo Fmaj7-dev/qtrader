@@ -1,6 +1,6 @@
 #include "configtree.h"
 #include "treemodel.h"
-#include "seriesplot.h"
+#include "plotcontroller.h"
 
 #include <QFile>
 #include <QStringList>
@@ -30,7 +30,7 @@ ConfigTree::~ConfigTree()
     
 }
 
-void ConfigTree::setPlot(SeriesPlot* plot)
+void ConfigTree::setPlotController(PlotController* plot)
 {
     plot_ = plot;
 

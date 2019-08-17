@@ -49,6 +49,4 @@ TEST_CASE("series reading test")
       std::cout<<i<<" "<<size<<" elements"<<std::endl;
       REQUIRE( size != 0 );
   }
-
-  REQUIRE( 1 == 1);
 }
