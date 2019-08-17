@@ -1,8 +1,6 @@
 #ifndef SERIEPLOT_H
 #define SERIEPLOT_H
 
-#include "liveseries.h"
-
 #include <QtCharts/QChartView>
 #include <QtCharts/QBarSeries>
 #include <QtCharts/QBarSet>
@@ -11,12 +9,16 @@
 #include <QtCharts/QValueAxis>
 #include <QtCharts/QLineSeries>
 
+class LiveSeries;
+class SimpleMovingAverage;
+
 class SeriesPlot : public QtCharts::QChartView
 {
 public:
     SeriesPlot();
 
     void addLiveSeries( const LiveSeries& series );
+    void addSimpleMovingAverage( const SimpleMovingAverage& sma );
 
 protected:
 /* void wheelEvent( QWheelEvent *event ) Q_DECL_OVERRIDE

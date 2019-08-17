@@ -1,13 +1,13 @@
 #ifndef PLOTCONTROLLER_H
 #define PLOTCONTROLLER_H
 
-#include "liveseries.h"
-
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QPushButton>
 
 class SeriesPlot;
+class LiveSeries;
+class SimpleMovingAverage;
 
 class PlotController : public QWidget
 {
@@ -16,6 +16,7 @@ public:
     PlotController();
 
     void addLiveSeries( const LiveSeries& series );
+    void addSimpleMovingAverage( const SimpleMovingAverage& series );
 
 public slots:
     void onResetTransform();

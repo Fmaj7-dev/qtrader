@@ -1,6 +1,9 @@
 #include "plotcontroller.h"
 #include "seriesplot.h"
-#include "iostream"
+#include "liveseries.h"
+#include "analysis/simplemovingaverage.h"
+
+#include <iostream>
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -22,6 +25,12 @@ void PlotController::addLiveSeries( const LiveSeries& liveSeries )
     layout_ = new QVBoxLayout( this );
     layout_->addWidget( seriesPlot_ );
     layout_->addWidget( resetTransform_ );
+}
+
+void PlotController::addSimpleMovingAverage( const SimpleMovingAverage& series )
+{
+    std::cout<<"PlotController::addSimpleMovingAverage"<<std::endl;
+    seriesPlot_->addSimpleMovingAverage( series );
 }
 
 void PlotController::onResetTransform()

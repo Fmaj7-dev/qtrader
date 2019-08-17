@@ -5,6 +5,8 @@
 #include <QFile>
 #include <QStringList>
 
+#include <iostream>
+
 ConfigTree::ConfigTree( )
 {
     view = new QTreeView();
@@ -35,5 +37,12 @@ void ConfigTree::setPlotController(PlotController* plot)
     plot_ = plot;
 
     auto series = repo_.getSeries("live_btc");
-    plot_->addLiveSeries(series);
+    plot_->addLiveSeries( series );
+
+    auto sma1 = repo_.getSMA("live_btc", 100);
+    plot->addSimpleMovingAverage(sma1);
+
+    auto sma2 = repo_.getSMA("live_btc", 20);
+    plot->addSimpleMovingAverage(sma2);
+
 }
