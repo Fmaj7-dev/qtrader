@@ -29,7 +29,7 @@ void SeriesPlot::addLiveSeries(const LiveSeries& liveSeries)
     QChart *chart = new QChart();
     chart->legend()->hide();
     chart->addSeries( series );
-    //chart->createDefaultAxes();
+    chart->createDefaultAxes();
     chart->setTitle( "series name" );
     chart->setAnimationOptions(QChart::SeriesAnimations);
 
@@ -68,6 +68,21 @@ void SeriesPlot::addSimpleMovingAverage( const SimpleMovingAverage& sma )
         series->append(item.time*1000, item.value);
         ++i;
     }
+
     chart->addSeries( series );
+    chart->createDefaultAxes();
+    /*QDateTimeAxis *axisX = new QDateTimeAxis;
+    axisX->setTickCount(8);
+    //axisX->setFormat("d MMM");
+    //axisX->setTitleText("Date");
+    chart->addAxis(axisX, Qt::AlignBottom);
+    series->attachAxis(axisX);
+
+    QValueAxis *axisY = new QValueAxis;
+    axisY->setLabelFormat("%i");
+    axisY->setTitleText("Value");
+    chart->addAxis(axisY, Qt::AlignLeft);
+    series->attachAxis(axisY);*/
+
     chart->update();
 }

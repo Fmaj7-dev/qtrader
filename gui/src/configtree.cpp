@@ -39,10 +39,15 @@ void ConfigTree::setPlotController(PlotController* plot)
     auto series = repo_.getSeries("live_btc");
     plot_->addLiveSeries( series );
 
+    /*auto sma0 = repo_.getSMA("live_btc", 200);
+    plot->addSimpleMovingAverage(sma0);*/
+
     auto sma1 = repo_.getSMA("live_btc", 100);
     plot->addSimpleMovingAverage(sma1);
 
     auto sma2 = repo_.getSMA("live_btc", 20);
     plot->addSimpleMovingAverage(sma2);
 
+    /* auto sma3 = repo_.getSMA("live_btc", 10);
+    plot->addSimpleMovingAverage(sma3);*/
 }
