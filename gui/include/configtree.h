@@ -7,8 +7,10 @@
 #include <QTreeView>
 #include <QLabel>
 #include <QVBoxLayout>
+#include <QPoint>
 
 class PlotController;
+class TreeModel;
 
 class ConfigTree : public QWidget
 {
@@ -18,6 +20,11 @@ public:
     virtual ~ConfigTree();
 
     void setPlotController( PlotController* plot );
+
+private slots:
+    void ShowContextMenu(const QPoint &pos);
+    void addSMA(  );
+    void addEMA();
 
 private:
     QTreeView* view;
@@ -29,6 +36,8 @@ private:
 
     // repository of series
     SeriesRepository repo_;
+
+    TreeModel* model;
     
 };
 

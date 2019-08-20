@@ -10,7 +10,6 @@ QT_CHARTS_USE_NAMESPACE
 
 SeriesPlot::SeriesPlot()
 {
-  
 }
 
 void SeriesPlot::addLiveSeries(const LiveSeries& liveSeries)
@@ -20,8 +19,8 @@ void SeriesPlot::addLiveSeries(const LiveSeries& liveSeries)
     int i = 0;
     for(auto& item: liveSeries.values)
     {
-        if (i < 10)
-            std::cout<<"Live value"<<item.time<<" "<<item.value<<std::endl;
+        /*if (i < 10)
+            std::cout<<"Live value"<<item.time<<" "<<item.value<<std::endl;*/
         series->append(item.time*1000, item.value);
         ++i;
     }
@@ -62,8 +61,8 @@ void SeriesPlot::addSimpleMovingAverage( const SimpleMovingAverage& sma )
     int i = 0;
     for(const auto& item: sma.getValues())
     {
-        if (i < 10)
-            std::cout<<"SMA value"<<item.time<<" "<<item.value<<std::endl;
+        /*if (i < 10)
+            std::cout<<"SMA value"<<item.time<<" "<<item.value<<std::endl;*/
 
         series->append(item.time*1000, item.value);
         ++i;
@@ -83,6 +82,13 @@ void SeriesPlot::addSimpleMovingAverage( const SimpleMovingAverage& sma )
     axisY->setTitleText("Value");
     chart->addAxis(axisY, Qt::AlignLeft);
     series->attachAxis(axisY);*/
+
+        QDateTimeAxis *axisX = new QDateTimeAxis;
+    axisX->setTickCount(8);
+    axisX->setFormat("d MMM");
+    axisX->setTitleText("Date");
+    chart->addAxis(axisX, Qt::AlignBottom);
+    series->attachAxis(axisX);
 
     chart->update();
 }

@@ -1,9 +1,12 @@
 #include "configtree.h"
 #include "treemodel.h"
 #include "plotcontroller.h"
+#include "utils/logger.h"
 
 #include <QFile>
 #include <QStringList>
+#include <QMenu>
+#include <QAction>
 
 #include <iostream>
 
@@ -11,12 +14,12 @@ ConfigTree::ConfigTree( )
 {
     view = new QTreeView();
     view->setObjectName(QString::fromUtf8("view"));
-    view->setAlternatingRowColors( true );
+    //view->setAlternatingRowColors( true );
 
     const QStringList headers({tr("Title"), tr("Description")});
     QFile file("default.txt");
     file.open(QIODevice::ReadOnly);
-    TreeModel *model = new TreeModel(headers, file.readAll());
+    model = new TreeModel(headers, file.readAll());
     file.close();
 
     view->setModel(model);
@@ -25,6 +28,11 @@ ConfigTree::ConfigTree( )
 
     layout = new QVBoxLayout( this );
     layout->addWidget(view);
+
+    // connect
+    view->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(view, SIGNAL(customContextMenuRequested(const QPoint &)), 
+        this, SLOT(ShowContextMenu(const QPoint &)));
 }
 
 ConfigTree::~ConfigTree()
@@ -38,16 +46,43 @@ void ConfigTree::setPlotController(PlotController* plot)
 
     auto series = repo_.getSeries("live_btc");
     plot_->addLiveSeries( series );
+}
 
-    /*auto sma0 = repo_.getSMA("live_btc", 200);
-    plot->addSimpleMovingAverage(sma0);*/
+void ConfigTree::ShowContextMenu(const QPoint &pos) 
+{
+    QModelIndexList selectedList = view->selectionModel()->selectedIndexes();
+    QModelIndex selected = selectedList[0];
+    QString name = model->data( model->index(selected.row(), 0), Qt::DisplayRole).toString();
+    
+    if( name == "Moving Averages" )
+    {
+        QMenu contextMenu(tr("Context menu"), this);
 
-    auto sma1 = repo_.getSMA("live_btc", 100);
-    plot->addSimpleMovingAverage(sma1);
+        QAction action1("Add Simple Moving Average", this);
+        connect(&action1, SIGNAL(triggered()), this, SLOT(addSMA()));
+        contextMenu.addAction(&action1);
 
-    auto sma2 = repo_.getSMA("live_btc", 20);
-    plot->addSimpleMovingAverage(sma2);
+        QAction action2("Add Exponential Moving Average", this);
+        connect(&action2, SIGNAL(triggered()), this, SLOT(addEMA()));
+        contextMenu.addAction(&action2);
 
-    /* auto sma3 = repo_.getSMA("live_btc", 10);
-    plot->addSimpleMovingAverage(sma3);*/
+        contextMenu.exec(mapToGlobal(pos));
+    }
+   /*else if()
+   {
+
+   }*/
+}
+
+void ConfigTree::addSMA()
+{
+    static int value = 10;
+    auto sma2 = repo_.getSMA("live_btc", value);
+    plot_->addSimpleMovingAverage(sma2);
+    value *= 2;
+}
+
+void ConfigTree::addEMA()
+{
+
 }

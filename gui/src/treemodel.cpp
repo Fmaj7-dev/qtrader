@@ -241,12 +241,12 @@ bool TreeModel::setHeaderData(int section, Qt::Orientation orientation,
     const bool result = rootItem->setData(section, value);
 
     if (result)
-        emit headerDataChanged(orientation, section, section);
+        emit headerDataChanged( orientation, section, section );
 
     return result;
 }
 
-void TreeModel::setupModelData(const QStringList &lines, TreeItem *parent)
+void TreeModel::setupModelData( const QStringList &lines, TreeItem *parent )
 {
     QVector<TreeItem*> parents;
     QVector<int> indentations;
