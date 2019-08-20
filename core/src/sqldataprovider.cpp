@@ -1,4 +1,5 @@
 #include "sqldataprovider.h"
+#include "utils/logger.h"
 
 #include <QSqlQuery>
 #include <QSqlError>
@@ -6,8 +7,6 @@
 #include <QString>
 #include <QFile>
 #include <QMap>
-
-#include <iostream>
 
 SqlDataProvider::SqlDataProvider()
     :db (QSqlDatabase::addDatabase("QMYSQL3"))
@@ -38,13 +37,13 @@ void SqlDataProvider::connectToDb()
     
     // check values
     if ( dbInfo.find("SQL_HOST") == dbInfo.end() )
-        std::cout<<"SQL_HOST not found in .env file"<<std::endl;
+        log( "SQL_HOST not found in .env file" );
 
     if ( dbInfo.find("SQL_USER") == dbInfo.end() )
-        std::cout<<"SQL_USER not found in .env file"<<std::endl;
+        log( "SQL_USER not found in .env file" );
 
     if ( dbInfo.find("SQL_PASS") == dbInfo.end() )
-        std::cout<<"SQL_PASS not found in .env file"<<std::endl;
+        log( "SQL_PASS not found in .env file" );
 
     db.setHostName( dbInfo["SQL_HOST"] );
     db.setDatabaseName("trading");
@@ -55,9 +54,9 @@ void SqlDataProvider::connectToDb()
     if(!ok)
     {
         QSqlError error = db.lastError();
-        std::cout<<error.databaseText().toStdString()<<std::endl;
-        std::cout<<error.driverText().toStdString()<<std::endl;
-        std::cout<<error.nativeErrorCode().toStdString()<<std::endl;
+        log(error.databaseText().toStdString());
+        log(error.driverText().toStdString());
+        log(error.nativeErrorCode().toStdString());
 
         throw DatabaseConnectionException();
     }

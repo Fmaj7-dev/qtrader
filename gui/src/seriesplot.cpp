@@ -4,8 +4,6 @@
 
 #include <QDateTimeAxis>
 
-#include <iostream>
-
 QT_CHARTS_USE_NAMESPACE
 
 SeriesPlot::SeriesPlot()
@@ -35,7 +33,7 @@ void SeriesPlot::addLiveSeries(const LiveSeries& liveSeries)
     this->setChart( chart );
     this->setRenderHint(QPainter::Antialiasing);
 
-    QDateTimeAxis *axisX = new QDateTimeAxis;
+/*     QDateTimeAxis *axisX = new QDateTimeAxis;
     axisX->setTickCount(8);
     axisX->setFormat("d MMM");
     axisX->setTitleText("Date");
@@ -46,7 +44,7 @@ void SeriesPlot::addLiveSeries(const LiveSeries& liveSeries)
     axisY->setLabelFormat("%i");
     axisY->setTitleText("Value");
     chart->addAxis(axisY, Qt::AlignLeft);
-    series->attachAxis(axisY);
+    series->attachAxis(axisY); */
 
     QChartView::RubberBand rubber = QChartView::RectangleRubberBand;
     this->setRubberBand( rubber );
@@ -70,7 +68,7 @@ void SeriesPlot::addSimpleMovingAverage( const SimpleMovingAverage& sma )
 
     chart->addSeries( series );
     chart->createDefaultAxes();
-    /*QDateTimeAxis *axisX = new QDateTimeAxis;
+    QDateTimeAxis *axisX = new QDateTimeAxis;
     axisX->setTickCount(8);
     //axisX->setFormat("d MMM");
     //axisX->setTitleText("Date");
@@ -81,14 +79,14 @@ void SeriesPlot::addSimpleMovingAverage( const SimpleMovingAverage& sma )
     axisY->setLabelFormat("%i");
     axisY->setTitleText("Value");
     chart->addAxis(axisY, Qt::AlignLeft);
-    series->attachAxis(axisY);*/
+    series->attachAxis(axisY);
 
-        QDateTimeAxis *axisX = new QDateTimeAxis;
+    /*QDateTimeAxis *axisX = new QDateTimeAxis;
     axisX->setTickCount(8);
     axisX->setFormat("d MMM");
     axisX->setTitleText("Date");
     chart->addAxis(axisX, Qt::AlignBottom);
-    series->attachAxis(axisX);
+    series->attachAxis(axisX);*/
 
     chart->update();
 }

@@ -3,12 +3,15 @@
 #include "plotcontroller.h"
 #include "utils/logger.h"
 
+#include "ui_smaconfig.h"
+
 #include <QFile>
 #include <QStringList>
 #include <QMenu>
 #include <QAction>
+#include <QSpinBox>
 
-#include <iostream>
+#include "utils/logger.h"
 
 ConfigTree::ConfigTree( )
 {
@@ -76,10 +79,14 @@ void ConfigTree::ShowContextMenu(const QPoint &pos)
 
 void ConfigTree::addSMA()
 {
-    static int value = 10;
+    QDialog dialog;
+    Ui::SMAConfig config;
+    config.setupUi(&dialog);
+    dialog.exec();
+    
+    int value = config.spinBox->value();
     auto sma2 = repo_.getSMA("live_btc", value);
     plot_->addSimpleMovingAverage(sma2);
-    value *= 2;
 }
 
 void ConfigTree::addEMA()

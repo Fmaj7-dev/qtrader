@@ -1,6 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
+#include "utils/logger.h"
 #include "seriesrepository.h"
 
 #include <memory>
@@ -46,7 +47,8 @@ TEST_CASE("series reading test")
   {
       auto series = repo.getSeries(i);
       size_t size = series.values.size();
-      std::cout<<i<<" "<<size<<" elements"<<std::endl;
+      //std::cout<<i<<" "<<size<<" elements"<<std::endl;
+      log(i, size, "elements");
       REQUIRE( size != 0 );
   }
 }

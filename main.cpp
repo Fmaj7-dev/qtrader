@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
     widget->setLayout( layout );
 
     // show window
-    window.resize(1024, 768);
+    window.resize(1800, 900);
     window.show();
 
     return a.exec();

@@ -40,4 +40,10 @@ ENDIF()
 target_link_libraries(qtrader Qt5::Widgets Qt5::Charts Qt5::Sql core gui mysql)
 #link_directories(/usr/local/mysql/lib)
 
+if(MSVC)
+  target_compile_options(qtrader PRIVATE /W4 /WX)
+else()
+  target_compile_options(qtrader PRIVATE -Wall -Wextra -pedantic -Werror)
+endif()
+
 install(TARGETS qtrader DESTINATION bin)

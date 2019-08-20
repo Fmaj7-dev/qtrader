@@ -1,5 +1,4 @@
 #include "seriesrepository.h"
-#include <iostream>
 
 SeriesRepository::SeriesRepository()
 {

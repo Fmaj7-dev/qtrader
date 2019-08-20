@@ -1,7 +1,6 @@
 #include "liveseries.h"
 #include "simplemovingaverage.h"
-
-#include <iostream>
+#include "utils/logger.h"
 
 SimpleMovingAverage::SimpleMovingAverage()
 {
