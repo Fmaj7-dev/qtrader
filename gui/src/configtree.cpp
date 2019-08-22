@@ -17,13 +17,18 @@ ConfigTree::ConfigTree( )
 {
     view = new QTreeView();
     view->setObjectName(QString::fromUtf8("view"));
-    //view->setAlternatingRowColors( true );
 
     const QStringList headers({tr("Title"), tr("Description")});
-    QFile file("default.txt");
-    file.open(QIODevice::ReadOnly);
-    model = new TreeModel(headers, file.readAll());
-    file.close();
+    model = new TreeModel(headers, "");
+
+    // fill with series
+    auto series = repo_.getAvailableSeries();
+    for( auto& i : series)
+    {
+        QVector< QVariant > data;
+        data<<i.c_str();
+        model->addRow( data );
+    }
 
     view->setModel(model);
     for (int column = 0; column < model->columnCount(); ++column)
@@ -57,7 +62,7 @@ void ConfigTree::ShowContextMenu(const QPoint &pos)
     QModelIndex selected = selectedList[0];
     QString name = model->data( model->index(selected.row(), 0), Qt::DisplayRole).toString();
     
-    if( name == "Moving Averages" )
+    //if( name == "Moving Averages" )
     {
         QMenu contextMenu(tr("Context menu"), this);
 
@@ -82,11 +87,25 @@ void ConfigTree::addSMA()
     QDialog dialog;
     Ui::SMAConfig config;
     config.setupUi(&dialog);
-    dialog.exec();
+    int ret = dialog.exec();
+
+    if ( ret == QDialog::Rejected )
+        return;
+
+    QModelIndexList selectedList = view->selectionModel()->selectedIndexes();
+    QModelIndex selected = selectedList[0];
+    QString name = model->data( model->index(selected.row(), 0), Qt::DisplayRole).toString();
     
     int value = config.spinBox->value();
-    auto sma2 = repo_.getSMA("live_btc", value);
+    auto sma2 = repo_.getSMA(name.toStdString(), value);
     plot_->addSimpleMovingAverage(sma2);
+
+    // insert sma item in tree
+    QVector< QVariant > data;
+    data<<name+" SMA "+QString::number(value);
+    model->addChild( selected, data );
+    view->update();
+
 }
 
 void ConfigTree::addEMA()

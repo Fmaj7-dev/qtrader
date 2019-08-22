@@ -95,6 +95,10 @@ public:
                     const QModelIndex &parent = QModelIndex()) override;
     bool removeRows(int position, int rows,
                     const QModelIndex &parent = QModelIndex()) override;
+    
+    bool addRow( QVector<QVariant>& data );
+
+    bool addChild( const QModelIndex& index, QVector<QVariant>& data );
 
 private:
     void setupModelData(const QStringList &lines, TreeItem *parent);

@@ -50,11 +50,12 @@
 
 #include "treemodel.h"
 #include "treeitem.h"
+#include "utils/logger.h"
 
 #include <QtWidgets>
 
 //! [0]
-TreeModel::TreeModel(const QStringList &headers, const QString &data, QObject *parent)
+TreeModel::TreeModel( const QStringList &headers, const QString &data, QObject *parent)
     : QAbstractItemModel(parent)
 {
     QVector<QVariant> rootData;
@@ -296,4 +297,35 @@ void TreeModel::setupModelData( const QStringList &lines, TreeItem *parent )
         }
         ++number;
     }
+}
+
+bool TreeModel::addRow( QVector<QVariant>& data )
+{
+    TreeItem *parent = rootItem;
+
+    parent->insertChildren( parent->childCount(), 1, rootItem->columnCount() );
+    for (int column = 0; column < data.size(); ++column)
+        parent->child( parent->childCount() - 1)->setData(column, data[column] );    
+
+    return true;
+}
+
+bool TreeModel::addChild( const QModelIndex& index, QVector<QVariant>& data )
+{
+    
+    QString name = this->data( this->index(index.row(), 0), Qt::DisplayRole).toString();
+    log( name.toStdString() );
+
+    TreeItem* parent = getItem( index );
+
+    //FIXME not working
+    beginInsertRows(index, parent->childCount(), parent->childCount() );
+
+    parent->insertChildren( parent->childCount(), 1, rootItem->columnCount() );
+    for (int column = 0; column < data.size(); ++column)
+        parent->child( parent->childCount() - 1)->setData(column, data[column] );    
+
+    endInsertRows();
+
+    return true;
 }
