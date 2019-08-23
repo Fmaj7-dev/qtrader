@@ -20,15 +20,17 @@ ScatterChart::~ScatterChart()
 {
 }
 
-void ScatterChart::drawResults( const std::vector< std::vector< float > >& results_)
+void ScatterChart::drawResults( const std::vector< std::vector< float > >& results_, 
+                                int minValue, 
+                                int step )
 {
   // fill fake results
   std::vector< std::vector< float > > results;
 
-  for(int i = 0; i < 30; ++i)
+  for(int i = 0; i < 50; ++i)
   {
     std::vector< float > row;
-    for(int j = 0; j < 30; ++j)
+    for(int j = 0; j < 50; ++j)
     {
       float balance = (rand()%1000) - 500;
       row.push_back(balance);

@@ -13,7 +13,9 @@ public:
     ScatterChart( QWidget *parent = 0 );
     virtual ~ScatterChart();
 
-    void drawResults( const std::vector< std::vector< float > >& results);
+    void drawResults( const std::vector< std::vector< float > >& results, 
+                      int minValue, 
+                      int step);
 
 private slots:
 
