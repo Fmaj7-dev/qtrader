@@ -10,6 +10,7 @@
 #include <QTreeView>
 #include <QDebug>
 #include <QSplitter>
+#include <QTabWidget>
 
 #include <iostream>
 
@@ -20,8 +21,13 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv); 
     QMainWindow window;
 
+    QTabWidget* tab = new QTabWidget();
     QWidget* widget = new QWidget();
-    window.setCentralWidget(widget);
+
+    tab->addTab(widget, "plots");
+    tab->addTab(new QWidget(), "asdf");
+
+    window.setCentralWidget(tab);
 
     // plot
     PlotController* plotController = new PlotController();

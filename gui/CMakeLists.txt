@@ -16,6 +16,7 @@ set( GUI_MOCS
     include/configtree.h
     include/treemodel.h
     include/plotcontroller.h
+    include/treeview.h
 )
 
 set( UI_FILES

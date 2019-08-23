@@ -2,6 +2,7 @@
 #include "treemodel.h"
 #include "plotcontroller.h"
 #include "utils/logger.h"
+#include "treeview.h"
 
 #include "ui_smaconfig.h"
 
@@ -15,7 +16,7 @@
 
 ConfigTree::ConfigTree( )
 {
-    view = new QTreeView();
+    view = new TreeView();
     view->setObjectName(QString::fromUtf8("view"));
 
     const QStringList headers({tr("Title"), tr("Description")});
@@ -41,6 +42,10 @@ ConfigTree::ConfigTree( )
     view->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(view, SIGNAL(customContextMenuRequested(const QPoint &)), 
         this, SLOT(ShowContextMenu(const QPoint &)));
+
+    connect(view, SIGNAL(valueChanged(const QItemSelection&, const QItemSelection&)), 
+            this, SLOT(plotSelected(const QItemSelection&,const QItemSelection&)));        
+
 }
 
 ConfigTree::~ConfigTree()
@@ -48,12 +53,21 @@ ConfigTree::~ConfigTree()
     
 }
 
+void ConfigTree::plotSelected(const QItemSelection&, const QItemSelection&)
+{
+    QModelIndexList selectedList = view->selectionModel()->selectedIndexes();
+    QModelIndex selected = selectedList[0];
+    QString name = model->data( model->index(selected.row(), 0), Qt::DisplayRole).toString();
+
+    auto series = repo_.getSeries( name.toStdString() );
+    plot_->addLiveSeries( series );
+
+    // FIXME: get children and add SMA's
+}
+
 void ConfigTree::setPlotController(PlotController* plot)
 {
     plot_ = plot;
-
-    auto series = repo_.getSeries("live_btc");
-    plot_->addLiveSeries( series );
 }
 
 void ConfigTree::ShowContextMenu(const QPoint &pos) 
@@ -62,7 +76,7 @@ void ConfigTree::ShowContextMenu(const QPoint &pos)
     QModelIndex selected = selectedList[0];
     QString name = model->data( model->index(selected.row(), 0), Qt::DisplayRole).toString();
     
-    //if( name == "Moving Averages" )
+    if( name.startsWith("live_") )
     {
         QMenu contextMenu(tr("Context menu"), this);
 
@@ -76,10 +90,6 @@ void ConfigTree::ShowContextMenu(const QPoint &pos)
 
         contextMenu.exec(mapToGlobal(pos));
     }
-   /*else if()
-   {
-
-   }*/
 }
 
 void ConfigTree::addSMA()

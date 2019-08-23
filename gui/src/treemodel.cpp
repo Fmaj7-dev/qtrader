@@ -82,15 +82,15 @@ int TreeModel::columnCount(const QModelIndex &parent) const
 }
 //! [2]
 
-QVariant TreeModel::data(const QModelIndex &index, int role) const
+QVariant TreeModel::data( const QModelIndex &index, int role ) const
 {
-    if (!index.isValid())
+    if ( !index.isValid() )
         return QVariant();
 
-    if (role != Qt::DisplayRole && role != Qt::EditRole)
+    if ( role != Qt::DisplayRole && role != Qt::EditRole )
         return QVariant();
 
-    TreeItem *item = getItem(index);
+    TreeItem *item = getItem( index );
 
     return item->data(index.column());
 }

@@ -23,8 +23,9 @@ public:
 
 private slots:
     void ShowContextMenu(const QPoint &pos);
-    void addSMA(  );
+    void addSMA();
     void addEMA();
+    void plotSelected(const QItemSelection&, const QItemSelection&);
 
 private:
     QTreeView* view;
