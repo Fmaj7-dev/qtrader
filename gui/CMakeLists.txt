@@ -1,6 +1,7 @@
 # tell cmake to include this
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/simulation)
 
 # source files
 set( GUI_SOURCES
@@ -9,6 +10,8 @@ set( GUI_SOURCES
     src/treemodel.cpp
     src/treeitem.cpp
     src/plotcontroller.cpp
+    src/simulation/simulationwidget.cpp
+    src/simulation/scatterchart.cpp
 )
 
 # files needed to moc
@@ -17,6 +20,8 @@ set( GUI_MOCS
     include/treemodel.h
     include/plotcontroller.h
     include/treeview.h
+    include/simulation/simulationwidget.h
+    include/simulation/scatterchart.h
 )
 
 set( UI_FILES

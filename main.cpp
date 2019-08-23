@@ -1,6 +1,6 @@
 #include "configtree.h"
-//#include "seriesplot.h"
 #include "plotcontroller.h"
+#include "simulation/simulationwidget.h"
 
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMainWindow>
@@ -24,8 +24,8 @@ int main(int argc, char *argv[])
     QTabWidget* tab = new QTabWidget();
     QWidget* widget = new QWidget();
 
-    tab->addTab(widget, "plots");
-    tab->addTab(new QWidget(), "asdf");
+    tab->addTab(widget, "Values");
+    tab->addTab(new SimulationWidget(), "Simulation");
 
     window.setCentralWidget(tab);
 
