@@ -3,7 +3,8 @@
 using namespace core;
 using namespace core::simulation;
 
-Simulator::Simulator()
+Simulator::Simulator( SeriesRepository& repository )
+:repo_( repository )
 {
     
 }

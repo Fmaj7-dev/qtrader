@@ -1,6 +1,7 @@
 #ifndef SIMULATOR_H
 #define SIMULATOR_H
 
+#include "seriesrepository.h"
 #include "simulation.h"
 
 namespace core
@@ -11,8 +12,11 @@ namespace simulation
 class Simulator 
 {
 public:
-    Simulator();
+    Simulator( SeriesRepository& repository );
     void runSimulation( Simulation& simulation );
+
+private:
+    SeriesRepository& repo_;
 };
 
 }

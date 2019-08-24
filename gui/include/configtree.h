@@ -16,7 +16,7 @@ class ConfigTree : public QWidget
 {
     Q_OBJECT
 public:
-    ConfigTree();
+    ConfigTree( SeriesRepository& repo );
     virtual ~ConfigTree();
 
     void setPlotController( PlotController* plot );
@@ -36,7 +36,7 @@ private:
     PlotController* plot_;
 
     // repository of series
-    SeriesRepository repo_;
+    SeriesRepository& repo_;
 
     TreeModel* model;
     

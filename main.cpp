@@ -1,3 +1,4 @@
+#include "seriesrepository.h"
 #include "configtree.h"
 #include "plotcontroller.h"
 #include "simulation/simulationwidget.h"
@@ -20,12 +21,13 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv); 
     QMainWindow window;
+    SeriesRepository repository;
 
     QTabWidget* tab = new QTabWidget();
     QWidget* widget = new QWidget();
 
     tab->addTab(widget, "Values");
-    tab->addTab(new SimulationWidget(), "Simulation");
+    tab->addTab(new SimulationWidget( repository ), "Simulation");
 
     window.setCentralWidget(tab);
 
@@ -33,7 +35,7 @@ int main(int argc, char *argv[])
     PlotController* plotController = new PlotController();
     
     // configTree
-    ConfigTree* configTree = new ConfigTree();
+    ConfigTree* configTree = new ConfigTree( repository );
     configTree->setPlotController( plotController );
 
     // add splitter

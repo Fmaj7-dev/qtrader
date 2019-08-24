@@ -56,3 +56,8 @@ float Simulation::getSellAmount() const
 {
     return sellAmount_;
 }
+
+const Criteria& Simulation::getCriteria() const
+{
+    return criteria_;
+}

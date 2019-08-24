@@ -14,7 +14,8 @@
 
 #include "utils/logger.h"
 
-ConfigTree::ConfigTree( )
+ConfigTree::ConfigTree( SeriesRepository& repo )
+: repo_( repo )
 {
     view = new TreeView();
     view->setObjectName(QString::fromUtf8("view"));

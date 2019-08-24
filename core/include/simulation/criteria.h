@@ -32,9 +32,9 @@ public:
 
         Subject(){}
         Subject( Type typeInput, Series seriesInput, int valueInput )
-            :type(typeInput),
-            series(seriesInput),
-            value(valueInput)
+            :series(seriesInput),
+            value(valueInput),
+            type(typeInput)
         {}
 
         Series series;

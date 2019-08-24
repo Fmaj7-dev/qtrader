@@ -1,6 +1,7 @@
 #ifndef SIMULATIONWIDGET_H
 #define SIMULATIONWIDGET_H
 
+#include "seriesrepository.h"
 #include "scatterchart.h"
 #include "simulation/simulator.h"
 
@@ -11,7 +12,7 @@ class SimulationWidget : public QWidget
 {
     Q_OBJECT
 public:
-    SimulationWidget( QWidget *parent = 0 );
+    SimulationWidget( SeriesRepository& repo, QWidget *parent = 0 );
     virtual ~SimulationWidget();
 
 private slots:
@@ -19,6 +20,7 @@ private slots:
 private:
     QHBoxLayout* layout_;
     ScatterChart* scatterChart_;
+    SeriesRepository& repo_;
     core::simulation::Simulator simulator_;
 };
 
