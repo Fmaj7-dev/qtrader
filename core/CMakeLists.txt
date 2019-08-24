@@ -8,6 +8,10 @@ set (CORE_SOURCES
     src/seriesrepository.cpp
     src/sqldataprovider.cpp
     src/analysis/simplemovingaverage.cpp
+    src/simulation/simulator.cpp
+    src/simulation/simulationresults.cpp
+    src/simulation/simulation.cpp
+    src/simulation/criteria.cpp
 )
 
 # we are making a library

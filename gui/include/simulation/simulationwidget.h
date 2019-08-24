@@ -2,6 +2,7 @@
 #define SIMULATIONWIDGET_H
 
 #include "scatterchart.h"
+#include "simulation/simulator.h"
 
 #include <QWidget>
 #include <QVBoxLayout>
@@ -18,6 +19,7 @@ private slots:
 private:
     QHBoxLayout* layout_;
     ScatterChart* scatterChart_;
+    core::simulation::Simulator simulator_;
 };
 
 #endif

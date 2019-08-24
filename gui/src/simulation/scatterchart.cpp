@@ -13,7 +13,8 @@ QT_CHARTS_USE_NAMESPACE
 ScatterChart::ScatterChart( QWidget *parent )
   : QChartView( new QChart(), parent )
 {
-  drawResults(std::vector< std::vector< float > >());
+  drawResults(std::vector< std::vector< float > >(),
+              1, 1);
 }
 
 ScatterChart::~ScatterChart()
@@ -52,7 +53,7 @@ void ScatterChart::drawResults( const std::vector< std::vector< float > >& resul
   {
     QScatterSeries *series0 = new QScatterSeries();
     series0->setMarkerShape(QScatterSeries::MarkerShapeCircle);
-    series0->setMarkerSize(2*i + 5);
+    series0->setMarkerSize(1.5*i + 5);
 
     int colorStep = 256/numSeries;
     series0->setColor(QColor(255 - i * colorStep, 255-4*i, 0));
@@ -66,7 +67,7 @@ void ScatterChart::drawResults( const std::vector< std::vector< float > >& resul
   {
     QScatterSeries *series0 = new QScatterSeries();
     series0->setMarkerShape(QScatterSeries::MarkerShapeCircle);
-    series0->setMarkerSize(2*i + 5);
+    series0->setMarkerSize(1.5*i + 5);
 
     int colorStep = 256/numSeries;
     series0->setColor(QColor(255-4*i, 255 - i * colorStep, 0));
