@@ -17,11 +17,6 @@ Simulation::Simulation( const Criteria& criteria,
 
 }
 
-/* void Simulation::setCriteria( const Criteria& criteria )
-{
-    criteria_ = criteria;
-} */
-
 void Simulation::setCapital( float capital )
 {
     capital_ = capital;

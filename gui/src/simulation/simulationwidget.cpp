@@ -35,9 +35,9 @@ void SimulationWidget::testSimulation()
     float max = 0;
     float min = 10000;
     int maxI, maxJ, minI, minJ;
-    for( int i = 300; i < 600; ++i )
+    for( int i = 2; i < 400; ++i )
     {
-        for( int j = 300; j < 600; ++j )
+        for( int j = 2; j < i/2; ++j )
         {
             Criteria::Subject btcSMA20( Criteria::Subject::Indicator::SMA,
                                         RepositoryDefinitions::Stock::LIVE_BTC,
@@ -48,8 +48,8 @@ void SimulationWidget::testSimulation()
                                         i );
                                     
 
-            Criteria::Condition buyCondition( btcSMA20, btcSMA100, Criteria::Verb::FALL_BEHIND );
-            Criteria::Condition sellCondition( btcSMA20, btcSMA100, Criteria::Verb::GET_AHEAD );
+            Criteria::Condition buyCondition( btcSMA20, btcSMA100, Criteria::Verb::GET_AHEAD );
+            Criteria::Condition sellCondition( btcSMA20, btcSMA100, Criteria::Verb::FALL_BEHIND );
 
             Criteria criteria;
             criteria.addBuyCondition( buyCondition );

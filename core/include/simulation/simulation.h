@@ -17,7 +17,6 @@ public:
                 float buyAmnt = 100,
                 float sellAmnt = 100 );
 
-    //void setCriteria( const Criteria& criteria );
     void setCapital( float capital );
     void setAsset( float asset );
     void setBuyAmount( float buy );
