@@ -1,6 +1,8 @@
 #ifndef CRITERIA_H
 #define CRITERIA_H
 
+#include "repositorydefinitions.h"
+
 #include <string>
 #include <vector>
 
@@ -17,29 +19,24 @@ public:
     class Subject
     {
     public:
-        enum class Type
+        enum class Indicator
         {
             SMA,
             EMA,
         };
-
-        enum class Series
-        {
-            BTC,
-            BCH,
-            ETH
-        };
-
         Subject(){}
-        Subject( Type typeInput, Series seriesInput, int valueInput )
-            :series(seriesInput),
-            value(valueInput),
-            type(typeInput)
+        Subject( Indicator typeInput, 
+                 RepositoryDefinitions::Stock s, 
+                 int param )
+
+            :stock( s ),
+            indicatorParam( param ),
+            indicator( typeInput )
         {}
 
-        Series series;
-        int value;
-        Type type;
+        RepositoryDefinitions::Stock stock;
+        int indicatorParam;
+        Indicator indicator;
     };
 
     // Verb: represents the event that happened
@@ -58,13 +55,13 @@ public:
         Condition(Subject subA, 
                   Subject subB,
                   Verb v)
-        : a( subA ),
-          b( subB ),
+        : subjectA( subA ),
+          subjectB( subB ),
           verb( v )
         {}
 
-        Subject a;
-        Subject b;
+        Subject subjectA;
+        Subject subjectB;
         Verb verb;
     };
 
@@ -77,12 +74,12 @@ public:
     {
     }
 
-    void addBuyCondition(Condition& condition)
+    void addBuyCondition(  Condition& condition)
     {
         buyConditions.push_back( condition );
     }
 
-    void addSellCondition(Condition& condition)
+    void addSellCondition( Condition& condition )
     {
         sellConditions.push_back( condition );
     }

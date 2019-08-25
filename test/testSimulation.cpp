@@ -12,12 +12,12 @@ TEST_CASE("Criteria Construction")
   using namespace core;
   using namespace core::simulation;
 
-  Criteria::Subject btcSMA20( Criteria::Subject::Type::SMA,
-                              Criteria::Subject::Series::BTC,
+  Criteria::Subject btcSMA20( Criteria::Subject::Indicator::SMA,
+                              RepositoryDefinitions::Stock::LIVE_BTC,
                               20 );
 
-  Criteria::Subject btcSMA100( Criteria::Subject::Type::SMA,
-                              Criteria::Subject::Series::BTC,
+  Criteria::Subject btcSMA100( Criteria::Subject::Indicator::SMA,
+                              RepositoryDefinitions::Stock::LIVE_BTC,
                               100 );
                             
 

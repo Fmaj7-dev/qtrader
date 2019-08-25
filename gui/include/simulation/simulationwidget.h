@@ -16,6 +16,7 @@ public:
     virtual ~SimulationWidget();
 
 private slots:
+    void testSimulation();
 
 private:
     QHBoxLayout* layout_;

@@ -13,9 +13,11 @@ class Simulation
 public:
     Simulation( const Criteria& criteria, 
                 float capital,
-                float asset = 0 );
+                float asset = 0,
+                float buyAmnt = 100,
+                float sellAmnt = 100 );
 
-    void setCriteria( const Criteria& criteria );
+    //void setCriteria( const Criteria& criteria );
     void setCapital( float capital );
     void setAsset( float asset );
     void setBuyAmount( float buy );
@@ -26,6 +28,11 @@ public:
     float getBuyAmount() const;
     float getSellAmount() const;
     const Criteria& getCriteria() const;
+
+    void increaseCapital( float amount );
+    void decreaseCapital( float amount );
+    void increaseAsset( float amount );
+    void decreaseAsset( float amount );
 
 private:
     Criteria criteria_;
