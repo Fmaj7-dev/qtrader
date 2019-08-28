@@ -3,6 +3,11 @@
 
 #include <vector>
 
+namespace core
+{
+namespace analysis
+{
+
 class SimpleMovingAverageTerm
 {
 public:
@@ -23,5 +28,7 @@ public:
 private:
     SMAValues values_;
 };
+}
+}
 
 #endif

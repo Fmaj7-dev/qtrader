@@ -312,6 +312,8 @@ bool TreeModel::addRow( QVector<QVariant>& data )
 
 bool TreeModel::addChild( const QModelIndex& index, QVector<QVariant>& data )
 {
+    using namespace core;
+    using namespace utils;
     
     QString name = this->data( this->index(index.row(), 0), Qt::DisplayRole).toString();
     log( name.toStdString() );

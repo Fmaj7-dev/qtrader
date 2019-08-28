@@ -9,6 +9,10 @@
 // FIXME: add TRACE, DEBUG, INFO, WARN, ERROR, FATAL
 // and output to file
 
+namespace core
+{
+namespace utils
+{
 template<typename T>
 inline void log(T v) 
 {
@@ -34,5 +38,8 @@ inline void log(QString first, Args... args)
   std::cout<< first.toStdString() <<" ";
   log(args...);
 }
+}
+}
+
 
 #endif

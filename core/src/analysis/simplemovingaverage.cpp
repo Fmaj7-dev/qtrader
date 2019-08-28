@@ -2,6 +2,9 @@
 #include "simplemovingaverage.h"
 #include "utils/logger.h"
 
+using namespace core;
+using namespace core::analysis;
+
 SimpleMovingAverage::SimpleMovingAverage()
 {
 

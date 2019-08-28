@@ -6,6 +6,9 @@
 
 QT_CHARTS_USE_NAMESPACE
 
+using namespace core;
+using namespace core::analysis;
+
 SeriesPlot::SeriesPlot()
 {
 }

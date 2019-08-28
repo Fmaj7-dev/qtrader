@@ -8,6 +8,7 @@
 
 
 std::shared_ptr<SeriesRepository> repo;
+using namespace core::utils;
 
 TEST_CASE("database access test")
 {

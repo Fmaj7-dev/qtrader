@@ -5,6 +5,8 @@
 #include "utils/logger.h"
 
 QT_CHARTS_USE_NAMESPACE
+using namespace core;
+using namespace core::analysis;
 
 PlotController::PlotController()
 :layout_(nullptr)

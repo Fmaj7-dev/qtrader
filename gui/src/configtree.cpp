@@ -14,6 +14,10 @@
 
 #include "utils/logger.h"
 
+using namespace core;
+using namespace core::analysis;
+
+
 ConfigTree::ConfigTree( SeriesRepository& repo )
 : repo_( repo )
 {

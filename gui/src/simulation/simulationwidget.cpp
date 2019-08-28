@@ -30,6 +30,7 @@ SimulationWidget::~SimulationWidget()
 void SimulationWidget::testSimulation()
 {
     using namespace core;
+    using namespace core::utils;
     using namespace core::simulation;
 
     float max = 0;

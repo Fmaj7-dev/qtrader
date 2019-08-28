@@ -7,7 +7,14 @@
 
 class SeriesPlot;
 class LiveSeries;
+
+namespace core
+{
+namespace analysis
+{
 class SimpleMovingAverage;
+}
+}
 
 class PlotController : public QWidget
 {
@@ -16,7 +23,7 @@ public:
     PlotController();
 
     void addLiveSeries( const LiveSeries& series );
-    void addSimpleMovingAverage( const SimpleMovingAverage& series );
+    void addSimpleMovingAverage( const core::analysis::SimpleMovingAverage& series );
 
 public slots:
     void onResetTransform();

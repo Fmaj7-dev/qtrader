@@ -10,7 +10,13 @@
 #include <QtCharts/QLineSeries>
 
 class LiveSeries;
+namespace core
+{
+namespace analysis
+{
 class SimpleMovingAverage;
+}
+}
 
 class SeriesPlot : public QtCharts::QChartView
 {
@@ -18,7 +24,7 @@ public:
     SeriesPlot();
 
     void addLiveSeries( const LiveSeries& series );
-    void addSimpleMovingAverage( const SimpleMovingAverage& sma );
+    void addSimpleMovingAverage( const core::analysis::SimpleMovingAverage& sma );
 
 protected:
 /* void wheelEvent( QWheelEvent *event ) Q_DECL_OVERRIDE

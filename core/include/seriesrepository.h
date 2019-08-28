@@ -9,7 +9,7 @@
 #include <map>
 
 using LiveSeriesMap = std::map< std::string, LiveSeries >;
-using SMAMap = std::map< std::string, SimpleMovingAverage >;
+using SMAMap = std::map< std::string, core::analysis::SimpleMovingAverage >;
 
 using SeriesList = std::vector< std::string >;
 
@@ -22,7 +22,7 @@ public:
     SeriesList getAvailableSeries();
 
     const LiveSeries& getSeries( std::string name );
-    const SimpleMovingAverage& getSMA( std::string seriesName, int n );
+    const core::analysis::SimpleMovingAverage& getSMA( std::string seriesName, int n );
 
 private:
     SqlDataProvider sqlProvider_;

@@ -1,5 +1,8 @@
 #include "seriesrepository.h"
 
+using namespace core;
+using namespace core::analysis;
+
 SeriesRepository::SeriesRepository()
 {
     

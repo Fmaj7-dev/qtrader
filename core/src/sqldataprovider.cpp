@@ -22,6 +22,8 @@ SqlDataProvider::~SqlDataProvider()
 
 void SqlDataProvider::connectToDb()
 {
+    using namespace core::utils;
+    
     // parse .env file for credentials
     QMap<QString, QString> dbInfo;
     QFile file(".env");
