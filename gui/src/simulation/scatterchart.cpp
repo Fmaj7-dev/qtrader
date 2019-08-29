@@ -9,6 +9,8 @@
 #include <QtMath>
 
 QT_CHARTS_USE_NAMESPACE
+using namespace gui;
+using namespace gui::simulation;
 
 ScatterChart::ScatterChart( QWidget *parent )
   : QChartView( new QChart(), parent )

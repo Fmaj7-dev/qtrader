@@ -8,6 +8,11 @@
 #include <QWidget>
 #include <QVBoxLayout>
 
+namespace gui
+{
+namespace simulation
+{
+
 class SimulationWidget : public QWidget
 {
     Q_OBJECT
@@ -25,4 +30,6 @@ private:
     core::simulation::Simulator simulator_;
 };
 
+}
+}
 #endif

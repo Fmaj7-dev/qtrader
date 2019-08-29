@@ -16,6 +16,8 @@
 #include <iostream>
 
 //QT_CHARTS_USE_NAMESPACE
+using namespace gui;
+using namespace gui::simulation;
 
 int main(int argc, char *argv[])
 {

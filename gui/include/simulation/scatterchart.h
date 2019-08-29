@@ -6,6 +6,11 @@
 
 #include <vector>
 
+namespace gui
+{
+namespace simulation
+{
+
 class ScatterChart : public QtCharts::QChartView
 {
     Q_OBJECT
@@ -22,5 +27,8 @@ private slots:
 private:
 
 };
+
+}
+}
 
 #endif

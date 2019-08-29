@@ -6,6 +6,9 @@
 
 #include <QPushButton>
 
+using namespace gui;
+using namespace gui::simulation;
+
 SimulationWidget::SimulationWidget(SeriesRepository& repo, QWidget *parent)
 :QWidget(parent),
 repo_( repo ),
