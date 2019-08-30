@@ -7,6 +7,7 @@
 #include <QtCharts/QLegend>
 #include <QtCharts/QBarCategoryAxis>
 #include <QtCharts/QValueAxis>
+#include <QtCharts/QDateTimeAxis>
 #include <QtCharts/QLineSeries>
 
 class LiveSeries;
@@ -35,6 +36,8 @@ protected:
         QChartView::wheelEvent(event);
     }*/
 private:
+    QtCharts::QDateTimeAxis* axisX;
+    QtCharts::QValueAxis* axisY;
 };
 
 #endif
