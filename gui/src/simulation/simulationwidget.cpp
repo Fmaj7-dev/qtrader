@@ -9,7 +9,7 @@
 using namespace gui;
 using namespace gui::simulation;
 
-SimulationWidget::SimulationWidget(SeriesRepository& repo, QWidget *parent)
+SimulationWidget::SimulationWidget( SeriesRepository& repo, QWidget *parent )
 :QWidget(parent),
 repo_( repo ),
 simulator_( repo )

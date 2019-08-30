@@ -10,6 +10,7 @@ set( GUI_SOURCES
     src/plotting/treemodel.cpp
     src/plotting/treeitem.cpp
     src/plotting/plotcontroller.cpp
+    src/plotting/plottingwidget.cpp
     src/simulation/simulationwidget.cpp
     src/simulation/scatterchart.cpp
 )
@@ -20,6 +21,7 @@ set( GUI_MOCS
     include/plotting/treemodel.h
     include/plotting/plotcontroller.h
     include/plotting/treeview.h
+    include/plotting/plottingwidget.h
     include/simulation/simulationwidget.h
     include/simulation/scatterchart.h
 )
