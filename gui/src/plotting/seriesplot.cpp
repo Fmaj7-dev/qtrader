@@ -1,8 +1,6 @@
-#include "seriesplot.h"
+#include "plotting/seriesplot.h"
 #include "liveseries.h"
 #include "analysis/simplemovingaverage.h"
-
-
 
 QT_CHARTS_USE_NAMESPACE
 

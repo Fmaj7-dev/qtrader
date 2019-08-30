@@ -54,7 +54,7 @@
     A container for items of data supplied by the simple tree model.
 */
 
-#include "treeitem.h"
+#include "plotting/treeitem.h"
 
 //! [0]
 TreeItem::TreeItem(const QVector<QVariant> &data, TreeItem *parent)

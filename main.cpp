@@ -1,6 +1,8 @@
 #include "seriesrepository.h"
-#include "configtree.h"
-#include "plotcontroller.h"
+
+#include "plotting/configtree.h"
+#include "plotting/plotcontroller.h"
+
 #include "simulation/simulationwidget.h"
 
 #include <QtWidgets/QApplication>

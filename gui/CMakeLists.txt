@@ -5,21 +5,21 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/simulation)
 
 # source files
 set( GUI_SOURCES
-    src/seriesplot.cpp 
-    src/configtree.cpp
-    src/treemodel.cpp
-    src/treeitem.cpp
-    src/plotcontroller.cpp
+    src/plotting/seriesplot.cpp 
+    src/plotting/configtree.cpp
+    src/plotting/treemodel.cpp
+    src/plotting/treeitem.cpp
+    src/plotting/plotcontroller.cpp
     src/simulation/simulationwidget.cpp
     src/simulation/scatterchart.cpp
 )
 
 # files needed to moc
 set( GUI_MOCS
-    include/configtree.h
-    include/treemodel.h
-    include/plotcontroller.h
-    include/treeview.h
+    include/plotting/configtree.h
+    include/plotting/treemodel.h
+    include/plotting/plotcontroller.h
+    include/plotting/treeview.h
     include/simulation/simulationwidget.h
     include/simulation/scatterchart.h
 )

@@ -1,5 +1,5 @@
-#include "plotcontroller.h"
-#include "seriesplot.h"
+#include "plotting/plotcontroller.h"
+#include "plotting/seriesplot.h"
 #include "liveseries.h"
 #include "analysis/simplemovingaverage.h"
 #include "utils/logger.h"

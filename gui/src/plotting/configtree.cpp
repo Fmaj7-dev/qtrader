@@ -1,8 +1,8 @@
-#include "configtree.h"
-#include "treemodel.h"
-#include "plotcontroller.h"
+#include "plotting/configtree.h"
+#include "plotting/treemodel.h"
+#include "plotting/plotcontroller.h"
+#include "plotting/treeview.h"
 #include "utils/logger.h"
-#include "treeview.h"
 
 #include "ui_smaconfig.h"
 
@@ -11,8 +11,6 @@
 #include <QMenu>
 #include <QAction>
 #include <QSpinBox>
-
-#include "utils/logger.h"
 
 using namespace core;
 using namespace core::analysis;

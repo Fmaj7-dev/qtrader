@@ -48,8 +48,8 @@
 **
 ****************************************************************************/
 
-#include "treemodel.h"
-#include "treeitem.h"
+#include "plotting/treemodel.h"
+#include "plotting/treeitem.h"
 #include "utils/logger.h"
 
 #include <QtWidgets>
