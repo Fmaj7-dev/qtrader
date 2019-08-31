@@ -7,6 +7,8 @@
 QT_CHARTS_USE_NAMESPACE
 using namespace core;
 using namespace core::analysis;
+using namespace gui;
+using namespace gui::plotting;
 
 PlotController::PlotController()
 :layout_(nullptr)

@@ -6,7 +6,6 @@
 #include <QHBoxLayout>
 
 using namespace gui;
-//using namespace gui::simulation;
 using namespace gui::plotting;
 
 PlottingWidget::PlottingWidget( SeriesRepository& repo )

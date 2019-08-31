@@ -16,6 +16,13 @@ class SimpleMovingAverage;
 }
 }
 
+namespace gui
+{
+namespace plotting
+{
+
+class SeriesPlot;
+
 class PlotController : public QWidget
 {
     Q_OBJECT
@@ -34,5 +41,8 @@ private:
 
     QVBoxLayout* layout_;
 };
+
+}
+}
 
 #endif

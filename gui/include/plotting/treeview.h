@@ -4,6 +4,11 @@
 #include <QTreeView>
 #include <QItemSelection>
 
+namespace gui
+{
+namespace plotting
+{
+
 class TreeView : public QTreeView
 {
   Q_OBJECT
@@ -19,5 +24,7 @@ signals:
     void valueChanged(const QItemSelection& current, const QItemSelection& previous);
 
 };
+}
+}
 
 #endif

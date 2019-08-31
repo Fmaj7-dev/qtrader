@@ -15,9 +15,14 @@ namespace core
 {
 namespace analysis
 {
-class SimpleMovingAverage;
+    class SimpleMovingAverage;
 }
 }
+
+namespace gui
+{
+namespace plotting
+{
 
 class SeriesPlot : public QtCharts::QChartView
 {
@@ -39,5 +44,8 @@ private:
     QtCharts::QDateTimeAxis* axisX;
     QtCharts::QValueAxis* axisY;
 };
+
+}
+}
 
 #endif
