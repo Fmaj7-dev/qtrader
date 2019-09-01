@@ -2,7 +2,7 @@
 #define SIMULATIONWIDGET_H
 
 #include "seriesrepository.h"
-#include "scatterchart.h"
+#include "simulation/scatterchart.h"
 #include "simulation/simulator.h"
 
 #include <QWidget>

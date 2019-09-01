@@ -5,11 +5,14 @@
 #include <QtCharts/QChartView>
 
 #include <vector>
+#include <tuple>
 
 namespace gui
 {
 namespace simulation
 {
+
+using Results = std::vector< std::tuple< int, int, float > >;
 
 class ScatterChart : public QtCharts::QChartView
 {
@@ -18,9 +21,7 @@ public:
     ScatterChart( QWidget *parent = 0 );
     virtual ~ScatterChart();
 
-    void drawResults( const std::vector< std::vector< float > >& results, 
-                      int minValue, 
-                      int step);
+    void drawResults( const Results& results );
 
 private slots:
 

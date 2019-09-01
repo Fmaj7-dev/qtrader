@@ -23,7 +23,7 @@ void SimpleMovingAverage::calculate( const LiveSeries& liveSeries, int n )
     float currentSum = 0;
     bool filled = false;
 
-    for (auto i = 0; i < inputLength; ++i)
+    for ( auto i = 0; i < inputLength; ++i )
     {
         // remove old element from sum
         currentSum -= tempBuffer[oldest];

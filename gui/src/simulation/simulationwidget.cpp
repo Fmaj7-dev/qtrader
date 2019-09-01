@@ -20,7 +20,7 @@ simulator_( repo )
     QPushButton* button = new QPushButton();
     button->setText("test");
     layout_->addWidget( button );
-    connect(button, SIGNAL (clicked()),this, SLOT (testSimulation()));
+    connect( button, SIGNAL (clicked()),this, SLOT (testSimulation()) );
 
     scatterChart_ = new ScatterChart(this);
     layout_->addWidget( scatterChart_ );
@@ -36,12 +36,17 @@ void SimulationWidget::testSimulation()
     using namespace core::utils;
     using namespace core::simulation;
 
+    Results results;
+
     float max = 0;
     float min = 10000;
     int maxI, maxJ, minI, minJ;
-    for( int i = 2; i < 400; ++i )
+
+    float startingCash = 10000;
+
+    for( int i = 2; i < 100; ++i )
     {
-        for( int j = 2; j < i/2; ++j )
+        for( int j = 2; j < 100; ++j )
         {
             Criteria::Subject btcSMA20( Criteria::Subject::Indicator::SMA,
                                         RepositoryDefinitions::Stock::LIVE_BTC,
@@ -59,14 +64,14 @@ void SimulationWidget::testSimulation()
             criteria.addBuyCondition( buyCondition );
             criteria.addSellCondition( sellCondition );
 
-            Simulation sim( criteria, 10000, 0, 500 );
+            Simulation sim( criteria, startingCash, 0, 100 );
 
             Simulator simulator( repo_ );
             simulator.runSimulation( sim );
             simulator.sellStock( sim );
 
             float result = sim.getCapital();
-            log(j, " ", i, " ", result );
+            //log(j, " ", i, " ", result );
 
             if( result > max )
             {
@@ -80,9 +85,15 @@ void SimulationWidget::testSimulation()
                 minJ = j;
                 min = result;
             }
+
+            //log("pushing ", i, j, result-startingCash );
+            results.push_back(std::make_tuple(i, j, result-startingCash ) );
         }
     }
 
     log("max: ", max, " ", maxI, " ", maxJ);
     log("min: ", min, " ", minI, " ", minJ);
+
+    scatterChart_->drawResults( results );
+    //scatterChart_->drawResults(std::vector< std::vector< float > >(), 1, 1);
 }
