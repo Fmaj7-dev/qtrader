@@ -19,9 +19,11 @@ class SimulationWidget : public QWidget
 public:
     SimulationWidget( SeriesRepository& repo, QWidget *parent = 0 );
     virtual ~SimulationWidget();
+    void resizeEvent(QResizeEvent *event);
 
 private slots:
     void testSimulation();
+    
 
 private:
     QHBoxLayout* layout_;

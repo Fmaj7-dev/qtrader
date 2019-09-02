@@ -22,6 +22,8 @@ public:
     virtual ~ScatterChart();
 
     void drawResults( const Results& results );
+    void savePng(const QString& path);
+    void clear();
 
 private slots:
 

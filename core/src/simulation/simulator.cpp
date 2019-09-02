@@ -11,7 +11,7 @@ Simulator::Simulator( SeriesRepository& repository )
     
 }
 
-void Simulator::runSimulation( Simulation& simulation )
+void Simulator::runSimulation( Simulation& simulation, int begin, int end )
 {
     const Criteria& criteria = simulation.getCriteria();
 
@@ -43,18 +43,26 @@ void Simulator::runSimulation( Simulation& simulation )
     
 
     // FIXME: I'am assuming both series and SMA's have the same size/origin
-
-    int startPoint = std::max(buySubjectA.indicatorParam, buySubjectB.indicatorParam );
-
     bool buy_aOverB = false;
     bool sell_aOverB = false;
 
-    for( int i = startPoint; i < buySeriesA.values.size(); ++i )
+    int startPoint;
+    int endPoint;
+    if ( end == 0 && begin == 0 )
+    {
+        startPoint = std::max(buySubjectA.indicatorParam, buySubjectB.indicatorParam );
+        endPoint = buySeriesA.values.size();
+    }
+    else
+    {
+        startPoint = begin;
+        endPoint = end;
+    }
+
+    for( int i = startPoint; i < endPoint; ++i )
     {
         float valueA = buySMAA.getValues()[i].value;
         float valueB = buySMAB.getValues()[i].value;
-        /* if(valueA > valueB) std::cout<<">";
-        else std::cout<<"<"; */
 
         float sellValueA = sellSMAA.getValues()[i].value;
         float sellValueB = sellSMAB.getValues()[i].value;
@@ -62,7 +70,6 @@ void Simulator::runSimulation( Simulation& simulation )
         // detect change in tendency from a>b to a<b
         if( buy_aOverB && valueB > valueA )
         {
-            //log("change");
             if( buyVerb == Criteria::Verb::FALL_BEHIND )
             {
                 float amountToSpend = std::min( simulation.getBuyAmount(), simulation.getCapital() );

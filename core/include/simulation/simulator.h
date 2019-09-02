@@ -13,7 +13,7 @@ class Simulator
 {
 public:
     Simulator( SeriesRepository& repository );
-    void runSimulation( Simulation& simulation );
+    void runSimulation( Simulation& simulation, int begin = 0, int end = 0 );
     void sellStock( Simulation& simulation );
 
 private:

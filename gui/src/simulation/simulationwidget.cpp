@@ -36,6 +36,9 @@ void SimulationWidget::testSimulation()
     using namespace core::utils;
     using namespace core::simulation;
 
+    for( int frame = 0; frame < 170; ++frame)
+    {
+    scatterChart_->clear();
     Results results;
 
     float max = 0;
@@ -49,13 +52,12 @@ void SimulationWidget::testSimulation()
         for( int j = 2; j < 100; ++j )
         {
             Criteria::Subject btcSMA20( Criteria::Subject::Indicator::SMA,
-                                        RepositoryDefinitions::Stock::LIVE_BTC,
+                                        RepositoryDefinitions::Stock::LIVE_ETH,
                                         j );
 
             Criteria::Subject btcSMA100( Criteria::Subject::Indicator::SMA,
-                                        RepositoryDefinitions::Stock::LIVE_BTC,
+                                        RepositoryDefinitions::Stock::LIVE_ETH,
                                         i );
-                                    
 
             Criteria::Condition buyCondition( btcSMA20, btcSMA100, Criteria::Verb::GET_AHEAD );
             Criteria::Condition sellCondition( btcSMA20, btcSMA100, Criteria::Verb::FALL_BEHIND );
@@ -67,7 +69,7 @@ void SimulationWidget::testSimulation()
             Simulation sim( criteria, startingCash, 0, 100 );
 
             Simulator simulator( repo_ );
-            simulator.runSimulation( sim );
+            simulator.runSimulation( sim, 0+frame*10, 700 + frame*10 );
             simulator.sellStock( sim );
 
             float result = sim.getCapital();
@@ -94,6 +96,20 @@ void SimulationWidget::testSimulation()
     log("max: ", max, " ", maxI, " ", maxJ);
     log("min: ", min, " ", minI, " ", minJ);
 
+    
+    QSize size = this->size();
+    int minSize = std::min( size.rheight(), size.rwidth() );
+    scatterChart_->setMaximumSize(minSize, minSize);
     scatterChart_->drawResults( results );
-    //scatterChart_->drawResults(std::vector< std::vector< float > >(), 1, 1);
+    scatterChart_->savePng(QString("output") + QString::number(frame) + ".png" );
+    }
+}
+
+void SimulationWidget::resizeEvent( QResizeEvent *event )
+{
+    QSize size = this->size();
+    int minSize = std::min( size.rheight(), size.rwidth() );
+    scatterChart_->setMaximumSize(minSize, minSize);
+
+    QWidget::resizeEvent( event );
 }
